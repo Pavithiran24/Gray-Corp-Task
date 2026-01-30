@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ThankYouPopup from "../components/ThankYouPopup";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,6 +13,7 @@ const Login = ({ onLogin }: LoginProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; speed: number }>>([]);
+  const [showThankYou, setShowThankYou] = useState(false);
 
   useEffect(() => {
     // Generate floating particles
@@ -38,12 +40,12 @@ const Login = ({ onLogin }: LoginProps) => {
     if (username && password) {
       localStorage.setItem("isLoggedIn", "true");
       onLogin();
+      setShowThankYou(true);
     }
   };
 
   return (
     <div className="relative flex items-center justify-center min-h-screen overflow-hidden bg-white">
-
       {/* Login Card */}
       <Card className="relative z-10 w-full max-w-md bg-white shadow-2xl animate-slide-up">
         <CardHeader>
@@ -87,6 +89,7 @@ const Login = ({ onLogin }: LoginProps) => {
           </form>
         </CardContent>
       </Card>
+      <ThankYouPopup open={showThankYou} onClose={() => setShowThankYou(false)} />
     </div>
   );
 };
