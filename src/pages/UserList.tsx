@@ -45,28 +45,28 @@ export default function UserList() {
     <div className="min-h-screen bg-background">
       <Header onRefresh={handleRefresh} isRefreshing={isRefreshing || isFetching} />
 
-      <main className="container mx-auto px-4 py-8 relative">
+      <main className="container mx-auto px-2 sm:px-4 py-6 sm:py-8 relative">
         {/* Floating Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full animate-float opacity-60"></div>
-          <div className="absolute top-40 right-20 w-16 h-16 bg-accent/10 rounded-full animate-float-slow opacity-40"></div>
-          <div className="absolute bottom-40 left-1/4 w-12 h-12 bg-secondary/10 rounded-full animate-float-reverse opacity-50"></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24 bg-primary/5 rounded-full animate-float opacity-30"></div>
+          <div className="absolute top-20 left-4 sm:left-10 w-14 sm:w-20 h-14 sm:h-20 bg-primary/10 rounded-full animate-float opacity-60"></div>
+          <div className="absolute top-40 right-4 sm:right-20 w-10 sm:w-16 h-10 sm:h-16 bg-accent/10 rounded-full animate-float-slow opacity-40"></div>
+          <div className="absolute bottom-40 left-1/4 w-8 sm:w-12 h-8 sm:h-12 bg-secondary/10 rounded-full animate-float-reverse opacity-50"></div>
+          <div className="absolute bottom-20 right-4 sm:right-10 w-16 sm:w-24 h-16 sm:h-24 bg-primary/5 rounded-full animate-float opacity-30"></div>
         </div>
 
         <div className="page-transition relative z-10">
           {/* Page Title */}
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold text-foreground sm:text-3xl animate-slide-up">
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground sm:text-3xl animate-slide-up">
               All Users
             </h2>
-            <p className="mt-1 text-muted-foreground animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            <p className="mt-1 text-sm sm:text-base text-muted-foreground animate-slide-up" style={{ animationDelay: '0.1s' }}>
               Browse and search through user profiles
             </p>
           </div>
 
           {/* Search */}
-          <div className="mb-8 max-w-md animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="mb-6 sm:mb-8 w-full max-w-full sm:max-w-md animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <SearchBar
               value={searchTerm}
               onChange={setSearchTerm}
@@ -86,7 +86,7 @@ export default function UserList() {
             />
           ) : (
             <>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {visibleItems.map((user) => (
                   <UserCard key={user.login.uuid} user={user} />
                 ))}
